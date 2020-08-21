@@ -1,7 +1,13 @@
 # repscidocker-v000
-This repository is a tutorial that shows how to make docker for reproducable science 
+This repository is a tutorial that shows how to make reproducible workflow that can be applied on personal laptop and cloud servers too 
 
-The workflo is based on these links:
+### Aims
+
+* Create a really reproducible workflow that works on laptop and cloud as well.
+  * Github contains a dockerfile for the reproducible computing environment.
+  * The GitHub is connected to DockerHub. If the 'Dockerfile' is modified and commited then a new image is built automaticaly on DockerHub 
+
+The workflow is based on these links:
 
 Official sites:
 
