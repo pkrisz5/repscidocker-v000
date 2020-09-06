@@ -7,7 +7,7 @@ This repository is a tutorial that shows how to make reproducible workflow that 
   * Github contains a dockerfile for the reproducible computing environment.
   * The GitHub is connected to DockerHub. If the 'Dockerfile' is modified and commited then a new image is built automaticaly on DockerHub 
 
-The workflow is based on these links:
+The workflow for connecting Github and Docker hub is based on these links:
 
 Official sites:
 
@@ -19,4 +19,8 @@ Tutorials (some are outdated):
 * http://www.derekmpowell.com/posts/2018/02/docker-tutorial-2/
 * https://docs.docker.com/docker-hub/builds/link-source/
 
-These pages are saved in the "savedlink" folder
+#### Docker file
+
+Always use versioned Docker images otherwise is not reproducible:
+
+The basis of dockerfile: https://hub.docker.com/r/rocker/tidyverse/
