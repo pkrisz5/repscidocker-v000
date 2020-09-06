@@ -24,3 +24,8 @@ Tutorials (some are outdated):
 Always use versioned Docker images otherwise is not reproducible:
 
 The basis of dockerfile: https://hub.docker.com/r/rocker/tidyverse/
+
+
+#### Usage 
+To get the image on the laptop run in Windows PowerShell:
+`docker pull pkrisz5/repscidocker-v000`
