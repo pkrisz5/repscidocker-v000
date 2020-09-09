@@ -38,11 +38,42 @@ To run:
 * The -d flag tells the container to run in the background (detached)
 
  
- 
+
 Then go to: http://localhost:8787/
 
-usefull commands:
+useful commands:
 
 * `docker images` shows available images
-* `docker container ls` list running containers
+* `docker ps` list running containers
 * `docker stop <ContainerId> ` Stop a given container
+
+#### Install new packages with docker
+
+##### First enter into a running container
+
+   * Check the running containers: ```docker ps```
+   * The code above will list the running containers and in this way the `NAME` of the container can be seen
+   * Enter the given container: `docker exec -i -t <NAME> /bin/bash`
+   * In this way it is possible to experiment any changes we might want to make and we can figure out if it give any error
+
+##### Installing R packages from CRAN
+
+* Use `install2.r` to install R package from CRAN eg. install `lme4` package:
+  * ```bash
+  	install2.r --error --deps TRUE lme4
+  	```
+* This will install the lme4 R package and its dependencies, throwing an error if anything fails along the way. If it’s a success, we can safely add this line to our Dockerfile.
+
+##### Installing R packages from github
+
+* ```bash
+  R --no-restore --no-save -e 'devtools::install_github("lme4/lme4",dependencies=TRUE)'
+  ```
+
+##### Installing R packages while specifying a specific version
+
+* ```bash
+  R --no-restore --no-save -e 'devtools::install_version("lme4", version="1.1-14")'
+  ```
+
+* To generalize, we can run any R command we want from the command line and we can do this in the creation of our docker container image.
