@@ -19,6 +19,18 @@ Tutorials (some are outdated):
 * http://www.derekmpowell.com/posts/2018/02/docker-tutorial-2/
 * https://docs.docker.com/docker-hub/builds/link-source/
 
+### Github
+
+Useful codes:
+
+``` bash
+git add -A
+git commit -m "x"
+git push
+```
+
+
+
 #### Docker file
 
 Always use versioned Docker images otherwise is not reproducible:
@@ -43,9 +55,12 @@ Then go to: http://localhost:8787/
 
 useful commands:
 
-* `docker images` shows available images
-* `docker ps` list running containers
-* `docker stop <ContainerId> ` Stop a given container
+``` bash
+* docker images # shows available images
+* docker image remove <IMAGE ID> # remove a given image
+* docker ps # list running containers
+* docker stop <ContainerId>  # Stop a given container
+```
 
 #### Install new packages with docker
 
@@ -77,3 +92,53 @@ useful commands:
   ```
 
 * To generalize, we can run any R command we want from the command line and we can do this in the creation of our docker container image.
+
+#### Installing system packages
+
+* The following commands will install eg. `libglu1-mesa-dev`
+
+* ``` bash
+  apt-get update -qq
+  apt-get -y --no-install-recommends install libglu1-mesa-dev
+  ```
+
+#### Putting together in a Docker file
+
+* ``` dockerfile
+  ####### Dockerfile #######
+  FROM rocker/tidyverse:3.4.3
+  
+  ENV DEBIAN_FRONTEND noninteractive
+  
+  RUN apt-get update -qq && apt-get -y --no-install-recommends install \
+  	libglu1-mesa-dev \
+  && install2.r --error \
+      --deps TRUE \
+      lme4 \
+      car
+  ```
+
+  * `RUN` is a docker command the executes bash commands during building the image *n bash, you can chain commands together with `&&` *and split them onto multiple lines with* `\`. Everything must be done in noninteractive mode because the build is automated, you won’t be there to press “y” to continue.
+
+  * It is good to test the building process locally, just go to the locally saved github repo in Windows PowerShell and run:
+
+  * ```bash
+    docker build repscidocker-v000
+    ```
+
+#### Add version tag
+
+* Make a single “personal” image with the libraries you use most. To maintain reproducibility between different projects, you can version this image using tags. Tags let you have multiple version of the same image, like tidyverse:3.4.3 
+
+* To set up your dockerhub repo for tagging, head to the “Build Settings” tab DockerHub. This is the tag configuration area. The first row shows that the “master” branch of the github repo is assigned the “latest” tag. This is a special, default tag. If you run `docker build rocker/tidyverse` with no specific tag, it will assume that the “latest” version should be used. On the next row, change “Branch” to “Tag” (as shown). Now, when you tag your github repo, that tag will also be reflected on docker. Be sure to click “save changes” when you’re done.
+
+* ```bash
+  git tag -a 0.0.1 -m "very first version"
+  git push origin --tags
+  ```
+
+For more info:
+
+* http://www.derekmpowell.com/posts/2018/02/docker-tutorial-2/
+* http://www.derekmpowell.com/posts/2018/02/docker-tutorial-1/
+
