@@ -28,10 +28,12 @@ The basis of dockerfile: https://hub.docker.com/r/rocker/tidyverse/
 
 #### Usage 
 To get the image on the laptop run in Windows PowerShell:
-`docker pull pkrisz5/repscidocker-v000`
+
+* `docker pull pkrisz5/repscidocker-v000`
 
 To run:
-docker run -d -p 8787:8787 -v c:\del:/home/rstudio/ -e PASSWORD=password pkrisz5/repscidocker-v000
+
+* `docker run -d -p 8787:8787 -v c:\del:/home/rstudio/ -e PASSWORD=password pkrisz5/repscidocker-v000`
 
 * The -d flag tells the container to run in the background (detached)
 
@@ -40,5 +42,7 @@ docker run -d -p 8787:8787 -v c:\del:/home/rstudio/ -e PASSWORD=password pkrisz5
 Then go to: http://localhost:8787/
 
 usefull commands:
-`docker images` shows available images
-`docker stop ContainerId ` Stop a given container
+
+* `docker images` shows available images
+* `docker container ls` list running containers
+* `docker stop <ContainerId> ` Stop a given container
