@@ -149,9 +149,7 @@ For more info:
 
 If you want to build the docker file file directly on the laptop, then make the `Dockerfile` as it was instructed earlier then in windows PowerShell go the folder containing the `Dockerfile` and run:
 
-* ```
-docker build -f Dockerfile -t <Name_of_tag> .
-```
+* `docker build -f Dockerfile -t <Name_of_tag> . `
 
 * -t ~ This will be the name of the tag
 * Note: do not forget the `.` at the end
