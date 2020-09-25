@@ -153,3 +153,20 @@ If you want to build the docker file file directly on the laptop, then make the 
 
 * -t ~ This will be the name of the tag
 * Note: do not forget the `.` at the end
+
+If you want a direct link that starts the rstudio:
+    
+    * create 'start.bat' with the following content
+    
+    ```
+    Powershell.exe -executionpolicy remotesigned -File  E:\del\powershell.ps1
+    ```
+    
+    * create 'powershell.ps1' with the following content:
+  
+	  ```
+      start-process "chrome.exe" "http://localhost:8787"
+      docker run --rm -d -p 8787:8787 -v C:\del\project:/home/rstudio/ -e PASSWORD=password rocker/rstudio
+    ```
+    
+    * if you run the 'start.bat' file then it will start the chrome and run rstudio
