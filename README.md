@@ -70,6 +70,7 @@ useful commands:
    * The code above will list the running containers and in this way the `NAME` of the container can be seen
    * Enter the given container: `docker exec -i -t <NAME> /bin/bash`
    * In this way it is possible to experiment any changes we might want to make and we can figure out if it give any error
+   * If you are ready use `exit` command to exit
 
 ##### Installing R packages from CRAN
 
@@ -118,7 +119,7 @@ useful commands:
       car
   ```
 
-  * `RUN` is a docker command the executes bash commands during building the image *n bash, you can chain commands together with `&&` *and split them onto multiple lines with* `\`. Everything must be done in noninteractive mode because the build is automated, you won’t be there to press “y” to continue.
+  * `RUN` is a docker command the executes bash commands during building the image in bash, you can chain commands together with `&&` and split them onto multiple lines with `\`. Everything must be done in noninteractive mode because the build is automated, you won’t be there to press “y” to continue.
 
   * It is good to test the building process locally, just go to the locally saved github repo in Windows PowerShell and run:
 
