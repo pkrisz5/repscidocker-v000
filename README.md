@@ -170,3 +170,10 @@ If you want a direct link that starts the rstudio:
     ```
     
     * if you run the 'start.bat' file then it will start the chrome and run rstudio
+  
+## Version tagged environment 
+
+Version-stable Rocker images for R >= 4.0.0
+
+https://github.com/rocker-org/rocker-versioned2
+
