@@ -177,3 +177,7 @@ Version-stable Rocker images for R >= 4.0.0
 
 https://github.com/rocker-org/rocker-versioned2
 
+## Conda environment
+
+https://carpentries-incubator.github.io/introduction-to-conda-for-data-scientists/04-sharing-environments/index.html
+
