@@ -29,6 +29,9 @@ git commit -m "x"
 git push
 ```
 
+Generate gitignore:
+
+* https://www.toptal.com/developers/gitignore/
 
 
 #### Docker file
